@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyf.mybatis.example.update.mapper.CustomerMapper">
+    <select id="updateCustomer" parameterType="com.yyf.mybatis.example.update.POJO.Customer" >
+        update t_customer set username=#{username}, jobs=#{jobs}, phone=#{phone} where id=#{id}
+    </select>
+</mapper>

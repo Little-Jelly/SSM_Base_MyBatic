@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyf.mybatis.example.query.mapper.CustomerMapper">
+    <select id="findCustomerId" parameterType="Integer" resultType="com.yyf.mybatis.example.query.POJO.Customer">
+        select * from t_customer where id = #{id}
+    </select>
+</mapper>
