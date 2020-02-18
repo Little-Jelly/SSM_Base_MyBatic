@@ -1,9 +1,11 @@
+import com.yyf.mybatis.core.utils.MyBatisUtils;
 import com.yyf.mybatis.example.query.POJO.Customer;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -123,6 +125,16 @@ public class Main {
             System.out.println("执行删除操作失败！！！");
         }
         sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void test_core_findAllUser(){
+        SqlSession sqlSession = MyBatisUtils.getSession();
+        List<com.yyf.mybatis.core.POJO.User> list = sqlSession.selectList("com.yyf.mybatis.core.mapper.UserMapper.findAllUser");
+        for( com.yyf.mybatis.core.POJO.User user : list){
+            System.out.println(user);
+        }
         sqlSession.close();
     }
 }

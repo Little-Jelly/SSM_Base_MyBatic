@@ -27,3 +27,8 @@ SqlSession.update()
 SqlSession.delete()
 SqlSession.commit()
 SqlSession.close()
+
+封装一个MyBatisUtils类
+内部的配置外在化：
+    数据库的连接属性外在化
+ 在映射文件中使用resultMap元素
