@@ -1,9 +1,11 @@
-package com.yyf.mybatis.core.POJO;
+package com.yyf.mybatis.associate.oneToOne.POJO;
 
-public class User {
+public class Person {
     private Integer id;
     private String name;
     private Integer age;
+    private String sex;
+    private IdCard card;
 
     public Integer getId() {
         return id;
@@ -29,12 +31,30 @@ public class User {
         this.age = age;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public IdCard getCard() {
+        return card;
+    }
+
+    public void setCard(IdCard card) {
+        this.card = card;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", card=" + card +
                 '}';
     }
 }

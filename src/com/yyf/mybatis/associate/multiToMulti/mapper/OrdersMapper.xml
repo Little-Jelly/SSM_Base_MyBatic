@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.yyf.mybatis.associate.multiToMulti.mapper.OrdersMapper">
+            <select id="findOrdersWithProduct" parameterType="Integer" resultMap="OrdersWithProductResult">
+                select * from tb_orders where id=#{id}
+            </select>
+            <resultMap type="Orders" id="OrdersWithProductResult">
+                <id property="id" column="id"/>
+                <result property="number" column="number"/>
+                <!--productList：是指需要映射到Orders对象的属性名称-->
+                <!--id：是要注入到select嵌套的sql语句中的参数名称，来自于上述sql语句执行的结果的column名的值-->
+                <!--Product：是指select查询结果的映射对象类型-->
+                <collection property="productList" column="id" ofType="Product"
+                            select="com.yyf.mybatis.associate.multiToMulti.mapper.ProductMapper.findProductById">
+                </collection>
+            </resultMap>
+        </mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.yyf.mybatis.associate.oneToMulti.mapper.UserMapper">
+            <select id="findUserWithOrders" parameterType="Integer" resultMap="UserWithOrdersResult">
+                select u.*, o.id as orders_id, o.number
+                from tb_user u, tb_orders o
+                where u.id=o.user_id
+                and u.id=#{id}
+            </select>
+            <resultMap type="User" id="UserWithOrdersResult">
+                <id property="id" column="id"/>
+                <result property="username" column="username"/>
+                <result property="address" column="address"/>
+
+                <collection property="ordersList" ofType="Orders">
+                    <id property="id" column="orders_id"/>
+                    <result property="number" column="number"/>
+                </collection>
+            </resultMap>
+        </mapper>

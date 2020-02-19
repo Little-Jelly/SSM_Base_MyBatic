@@ -1,3 +1,4 @@
+import com.yyf.mybatis.associate.oneToOne.POJO.Person;
 import com.yyf.mybatis.core.utils.MyBatisUtils;
 import com.yyf.mybatis.example.query.POJO.Customer;
 import org.apache.ibatis.io.Resources;
@@ -135,6 +136,30 @@ public class Main {
         for( com.yyf.mybatis.core.POJO.User user : list){
             System.out.println(user);
         }
+        sqlSession.close();
+    }
+
+    @Test
+    public void test_oneToOne(){
+        SqlSession sqlSession = com.yyf.mybatis.associate.oneToOne.utils.MyBatisUtils.getSession();
+        com.yyf.mybatis.associate.oneToOne.POJO.Person person = sqlSession.selectOne("com.yyf.mybatis.associate.oneToOne.mapper.PersonMapper.findPersonById",2);
+        System.out.println(person);
+        sqlSession.close();
+    }
+
+    @Test
+    public void test_oneToMulti(){
+        SqlSession sqlSession = com.yyf.mybatis.associate.oneToMulti.utils.MyBatisUtils.getSession();
+        com.yyf.mybatis.associate.oneToMulti.POJO.User user = sqlSession.selectOne("com.yyf.mybatis.associate.oneToMulti.mapper.UserMapper.findUserWithOrders", 1);
+        System.out.println(user);
+        sqlSession.close();
+    }
+
+    @Test
+    public void test_multiToMulti(){
+        SqlSession sqlSession = com.yyf.mybatis.associate.multiToMulti.utils.MyBatisUtils.getSession();
+        com.yyf.mybatis.associate.multiToMulti.POJO.Orders orders = sqlSession.selectOne("com.yyf.mybatis.associate.multiToMulti.mapper.OrdersMapper.findOrdersWithProduct", 1);
+        System.out.println(orders);
         sqlSession.close();
     }
 }
