@@ -23,6 +23,7 @@ public class Main {
      * 查询结果是一条数据
      * res: successfully
      * @throws IOException
+     * related base package: com.yyf.mybatis/example/query
      */
     @Test
     public void test_findCustomerByIdTest() throws IOException {
@@ -31,7 +32,6 @@ public class Main {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         Customer customer = sqlSession.selectOne("com.yyf.mybatis.example.query.mapper.CustomerMapper.findCustomerId", 1);
-
         System.out.println(customer.toString());
         sqlSession.close();
     }
@@ -41,6 +41,7 @@ public class Main {
      * 查询结果是多条数据
      * res:successfully
      * @throws IOException
+     * related base package: com/yyf/mybatis/example/queryFuzzy/
      */
     @Test
     public void test_findCustomerId_fuzzy() throws IOException{
@@ -59,6 +60,7 @@ public class Main {
      * 向数据库表中插入一条数据
      *
      * @throws IOException
+     * related base package: com/yyf/mybatis/example/add/
      */
     @Test
     public void test_addCustomer() throws IOException{
@@ -86,6 +88,7 @@ public class Main {
      * 向数据库表中更新一条数据
      *
      * @throws IOException
+     * related base package: com/yyf/mybatis/example/update
      */
     @Test
     public void test_updateCustomer() throws IOException{
@@ -112,6 +115,7 @@ public class Main {
      * 删除数据库表中的一条数据
      *
      * @throws IOException
+     * related base package: com/yyf/mybatis/example/delete
      */
     @Test
     public void test_deleteCustomer() throws IOException {
@@ -129,6 +133,11 @@ public class Main {
         sqlSession.close();
     }
 
+    /**
+     *  查询一个数据库表中的所有信息
+     *
+     * related base package: com/yyf/mybatis/core
+     */
     @Test
     public void test_core_findAllUser(){
         SqlSession sqlSession = MyBatisUtils.getSession();
@@ -139,6 +148,11 @@ public class Main {
         sqlSession.close();
     }
 
+    /**
+     * mybatis的映射关系：一对一映射
+     *
+     * related base package: com/yyf/mybatis/associate/oneToOne
+     */
     @Test
     public void test_oneToOne(){
         SqlSession sqlSession = com.yyf.mybatis.associate.oneToOne.utils.MyBatisUtils.getSession();
@@ -147,6 +161,11 @@ public class Main {
         sqlSession.close();
     }
 
+    /**
+     * mybatis的映射关系：一对多映射
+     *
+     * related base package: com/yyf/mybatis/associate/oneToMulti
+     */
     @Test
     public void test_oneToMulti(){
         SqlSession sqlSession = com.yyf.mybatis.associate.oneToMulti.utils.MyBatisUtils.getSession();
@@ -155,6 +174,11 @@ public class Main {
         sqlSession.close();
     }
 
+    /**
+     * mybatis的映射关系：多对多映射
+     *
+     * related base package: com/yyf/mybatis/associate/multiToMulti
+     */
     @Test
     public void test_multiToMulti(){
         SqlSession sqlSession = com.yyf.mybatis.associate.multiToMulti.utils.MyBatisUtils.getSession();
